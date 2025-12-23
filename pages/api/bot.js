@@ -110,5 +110,9 @@ export default async function handler(req, res) {
     });
   }
 
-  return res.status(400).send("Unknown interaction type");
+  // ⚠️ 一定要兜底，否则 Discord 会报 Unknown interaction type
+return res.send({
+  type: InteractionResponseType.PONG
+});
+
 }
